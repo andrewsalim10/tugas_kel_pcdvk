@@ -338,8 +338,8 @@ class Basic_Workflow_CV:
         # "SA": 4,
         # "SU": 5
         # labels=['Angry','Disgusted','Fearful','Happy','Neutral','Sad','Surprised'] #[0, 1, 2, 3, 4, 5]
-        labels_key = [key for key, val in self.target_names.items()]
-        labels_val = [val for key, val in self.target_names.items()]
+        labels_key = [val for key, val in self.target_names.items()]
+        labels_val = [key for key, val in self.target_names.items()]
         
         cm = confusion_matrix(y_test, predict, labels=labels_val)
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels =labels_key)
@@ -351,14 +351,14 @@ class Basic_Workflow_CV:
         plt.savefig(f"{save_path}/cm_{name_file}.jpg", dpi=200)
 
     def visualize_sample(self, name_file, model, valid_loader, batch_size, save_path, str_to_num=False, pov2=False):
-        if batch_size % 2 == 1:
-            batch_size -= 1
-
         # visualize_sample
         images, labels = next(iter(valid_loader))
         if str_to_num:
             labels = torch.from_numpy( np.array([self.target_names[label] for label in labels]) )
-
+        
+        batch_size = images.shape[0]
+        if batch_size % 2 == 1:
+            batch_size -= 1
         ###
         images.to(self.device)
         output = model(images)
@@ -409,7 +409,7 @@ class Basic_Workflow_CV:
         'finercam': FinerCAM
         }
 
-        target_layers = [model.module.features[-1]]
+        target_layers = [model.features[-1]]
         targets = None
 
         for i in range(col):

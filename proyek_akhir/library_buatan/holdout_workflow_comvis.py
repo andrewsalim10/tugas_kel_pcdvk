@@ -1,4 +1,4 @@
-from basic_workflow_comvis import Basic_Workflow_CV, DfToDataset
+from library_buatan.basic_workflow_comvis import Basic_Workflow_CV, DfToDataset
 
 import time
 
@@ -631,7 +631,7 @@ class Holdout_Workflow_CV(Basic_Workflow_CV):
         self.cm_disp(f"valid_{name_file}", np.array(best_valid_targets), np.array(best_valid_preds), save_path)
         
         self.visualize_sample(f"valid_{name_file}", model, test_loader, batch_size, save_path, str_to_num=str_to_num, pov2=use_pov2)
-        self.visualize_gradcam(f"valid_{name_file}", model, test_loader, batch_size, save_path, pov2=use_pov2)
+        self.visualize_gradcam(f"valid_{name_file}", model.module, test_loader, batch_size, save_path, pov2=use_pov2)
 
         # Simpan epochs dan list akurasi dan loss
         # dict_loss_acc_test={"epoch": [i for i in range(epc, epoch+1)],
@@ -765,7 +765,7 @@ class Holdout_Workflow_CV(Basic_Workflow_CV):
         self.cm_disp(f"uji_{name_file}", np.array(test_targets), np.array(test_preds), save_path)
         
         self.visualize_sample(f"uji_{name_file}", model, test_loader2, batch_size, save_path, str_to_num=str_to_num, pov2=use_pov2)
-        self.visualize_gradcam(f"uji_{name_file}", model, test_loader2, batch_size, save_path, pov2=use_pov2)
+        self.visualize_gradcam(f"uji_{name_file}", model.module, test_loader2, batch_size, save_path, pov2=use_pov2)
 
 
         del train_loader

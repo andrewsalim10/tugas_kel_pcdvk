@@ -1,0 +1,2 @@
+epoch,test_loss,test_accuracy,test_precision,test_f1,test_recall,test_roc_auc,elapsed_time
+20,0.006408939689836218,100.0,100.0,100.0,100.0,1.0,0.10853695869445801

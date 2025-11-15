@@ -1,0 +1,18 @@
+
+		Test loss: 0.006
+			Test Accuracy: 100.000%
+			Test Precision: 100.000%
+			Test F1: 100.000%
+			Test Recall: 100.000%
+		ROC AUC test: 1.0
+	Waktu komputasi testing: 0.10853695869445801 detik
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         3
+           1       1.00      1.00      1.00         1
+           2       1.00      1.00      1.00         4
+           3       1.00      1.00      1.00         1
+
+    accuracy                           1.00         9
+   macro avg       1.00      1.00      1.00         9
+weighted avg       1.00      1.00      1.00         9
