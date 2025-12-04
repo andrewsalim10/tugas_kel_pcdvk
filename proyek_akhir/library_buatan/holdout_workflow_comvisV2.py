@@ -525,7 +525,12 @@ class Holdout_Workflow_CV2(Basic_Workflow_CV):
 
             # pass
         else:
-            model.load_state_dict(torch.load(f"{save_path}/{name_file}.pth"))
+            # model.load_state_dict(torch.load(f"{save_path}/{name_file}.pth"))
+            model1.load_state_dict(torch.load(f"{save_path}/{name_file}.pth") )
+            model = DDP(model1.to(self.device), device_ids=[rank])
+            # try:
+            model = model.to(self.device)
+            
             running_loss = 0.0
             total = 0
             true = 0
