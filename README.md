@@ -1,6 +1,3 @@
-# tugas_kel_pcdvk
-* Tugas image inpating dikerjakan pada folder image_inpanting
-
 # 📌 Tugas Pengolahan Citra Digital dan Visi Komputer
 
 Kumpulan tugas kelompok untuk mata kuliah Pengolahan Citra Digital dan Visi Komputer
