@@ -12,6 +12,7 @@ lower_hsv = np.array([10, 40, 40])
 upper_hsv = np.array([90, 255, 255]) 
 
 for split, folders in source_dirs.items():
+    # def preprosessegmentasi(output_color_path, lower_hsv, upper_hsv, )
     for folder_path in folders:
         if not os.path.exists(folder_path): continue
 

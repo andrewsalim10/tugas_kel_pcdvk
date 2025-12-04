@@ -1,3 +1,6 @@
 *.zip
 mobilenetv3large
 git_push_all.sh
+sampah
+apple_leaf_dataset/rcnn/train_rcnn_large/
+apple_leaf_dataset/rcnn/valid_rcnn_large/

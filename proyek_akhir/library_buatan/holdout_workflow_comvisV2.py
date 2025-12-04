@@ -1,6 +1,6 @@
 # V2: pakai torch.nn.parallel.DistributedDataParallel
 
-from library_buatan.basic_workflow_comvis import Basic_Workflow_CV, DfToDataset
+from .basic_workflow_comvis import Basic_Workflow_CV, DfToDataset
 
 import time
 
@@ -210,15 +210,15 @@ class Holdout_Workflow_CV2(Basic_Workflow_CV):
             valid_data = DfToDataset(valid_dataset, path, transform_test)
             train_data = DfToDataset(train_dataset, path, transform_train)
             train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=8)
-            test_loader = DataLoader(valid_data, batch_size=batch_size, shuffle=False, num_workers=0)
+            test_loader = DataLoader(valid_data, batch_size=batch_size, shuffle=True, num_workers=0)
 
             test_dataset = pd.read_csv(dataset_list[2]) # dataset_list[2]
             test_data = DfToDataset(test_dataset, path, transform_test)
-            test_loader2 = DataLoader(test_data, batch_size=batch_size, shuffle=False, num_workers=0)
+            test_loader2 = DataLoader(test_data, batch_size=batch_size, shuffle=True, num_workers=0)
         if not dataset_list2 is None:
             train_loader = DataLoader(dataset_list2[0], batch_size=batch_size, shuffle=True, num_workers=8)
-            test_loader = DataLoader(dataset_list2[1], batch_size=batch_size, shuffle=False, num_workers=0)
-            test_loader2 = DataLoader(dataset_list2[2], batch_size=batch_size, shuffle=False, num_workers=0)
+            test_loader = DataLoader(dataset_list2[1], batch_size=batch_size, shuffle=True, num_workers=0)
+            test_loader2 = DataLoader(dataset_list2[2], batch_size=batch_size, shuffle=True, num_workers=0)
 
         # kfold_dir = "kfold_data_nonperson"
         # train_index = pd.read_csv(f"{kfold_dir}/latih_{name_file_index}.csv")['idx_train'].values
@@ -426,7 +426,7 @@ class Holdout_Workflow_CV2(Basic_Workflow_CV):
                 scheduler.step(val_losses[-1])
 
                 # if val_loss < best_val_loss:
-                if round(val_accuracy, 2) >= round(best_val_accuracy, 2):
+                if round(val_accuracy, 2) > round(best_val_accuracy, 2):
                     counter = 0
 
                     best_val_accuracy = val_accuracy
