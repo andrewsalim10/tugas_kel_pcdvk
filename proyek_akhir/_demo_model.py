@@ -28,10 +28,10 @@ img_predict = models.MobileNetV3(inverted_residual_setting=inverted_residual_set
 obj_detection = model_maskrcnnn()
 
 img_predict.load_state_dict( torch.load(
-    os.path.join(os.getcwd(), "hasil/mobilenetv3small/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch.pth")
+    "hasil/mobilenetv3small/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch.pth"
     ) )
 obj_detection.load_state_dict(torch.load(
-    os.path.join(os.getcwd(), f"model_epoch_mask_rcnn50_normalize.pth")
+    f"model_epoch_mask_rcnn50_normalize.pth"
     ) )
 
 img_predict.to(device)
