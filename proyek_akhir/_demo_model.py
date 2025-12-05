@@ -148,8 +148,10 @@ for idx, target_folder in enumerate(target_folders):
 # Display the combined image in a single window
 cv2.imshow('Combined Images', combined_image)
 
-# Wait for a key press (misal tekan q)
-cv2.waitKey(0)
+while True:
+    # Wait for a key press (misal tekan q)
+    if cv2.waitKey(0) == ord('q'):
+        break
 
 # Destroy all windows
 cv2.destroyAllWindows()
