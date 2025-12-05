@@ -149,7 +149,7 @@ for idx, target_folder in enumerate(target_folders):
 cv2.imshow('Combined Images', combined_image)
 
 while True:
-    # Wait for a key press (misal tekan q)
+    # Wait for a 'q' key press
     if cv2.waitKey(0) == ord('q'):
         break
 
