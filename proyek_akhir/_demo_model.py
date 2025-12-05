@@ -28,10 +28,10 @@ img_predict = models.MobileNetV3(inverted_residual_setting=inverted_residual_set
 obj_detection = model_maskrcnnn()
 
 img_predict.load_state_dict( torch.load(
-    "hasil/mobilenetv3small/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch.pth"
+    r"hasil/mobilenetv3small/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch/apple_leaf_disease_20_mobilenetv3small_Adam_default_outchan1280_16batch.pth"
     ) )
 obj_detection.load_state_dict(torch.load(
-    f"model_epoch_mask_rcnn50_normalize.pth"
+    r"model_epoch_mask_rcnn50_normalize.pth"
     ) )
 
 img_predict.to(device)
@@ -40,7 +40,7 @@ obj_detection.to(device)
 img_predict.eval()
 obj_detection.eval()
 
-path = 'apple_leaf_dataset/rcnn/valid_rcnn'
+path = r'apple_leaf_dataset/rcnn/valid_rcnn'
 target_folders = os.listdir(path)
 
 combined_image = 0
@@ -118,11 +118,11 @@ for idx, target_folder in enumerate(target_folders):
                             overlay)
 
             # Draw bounding box and label text on overlay
-            # x1, y1, x2, y2 = box
+            x1, y1, x2, y2 = box
             # cv2.putText(overlay, f"{class_name}: {score:.2f}", (x1, y1 - 10),
             #             cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2, lineType=cv2.LINE_AA)
-            # cv2.putText(overlay, f"{class_name}: {score:.2f}", (x1, y1), cv2.FONT_HERSHEY_SIMPLEX,
-            #             0.4, color, 1, lineType=cv2.LINE_AA)
+            cv2.putText(overlay, f"{score:.2f}", (x1, y1), cv2.FONT_HERSHEY_SIMPLEX,
+                        0.4, color, 1, lineType=cv2.LINE_AA)
 
     cv2.putText(overlay, f"Disease: {counting}", (0, overlay.shape[1]-10), cv2.FONT_HERSHEY_SIMPLEX,
                 0.4, (255,0,255), 1, lineType=cv2.LINE_AA)
@@ -148,7 +148,7 @@ for idx, target_folder in enumerate(target_folders):
 # Display the combined image in a single window
 cv2.imshow('Combined Images', combined_image)
 
-# Wait for a key press (misal pencet q)
+# Wait for a key press (misal tekan q)
 cv2.waitKey(0)
 
 # Destroy all windows
